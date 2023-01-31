@@ -16,6 +16,7 @@ public class RequestClient extends BaseClient {
 
     private static final String API_PREFIX = "/requests";
     private static final String SHAREIT_SERVER_URL = "http://localhost:9090";
+
     @Autowired
     public RequestClient(@Value(SHAREIT_SERVER_URL) String serverUrl, RestTemplateBuilder builder) {
         super(
