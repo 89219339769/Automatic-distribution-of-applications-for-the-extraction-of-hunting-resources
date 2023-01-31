@@ -16,10 +16,9 @@ import ru.practicum.shareit.user.userDto.UserDto;
 @Service
 public class UserClient extends BaseClient {
     private static final String API_PREFIX = "/users";
-    private static final String SHAREIT_SERVER_URL = "http://localhost:9090";
 
     @Autowired
-    public UserClient(@Value(SHAREIT_SERVER_URL) String serverUrl, RestTemplateBuilder builder) {
+    public UserClient(@Value("${shareit-server.url}") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl + API_PREFIX))

@@ -19,7 +19,7 @@ public class BookingClient extends BaseClient {
     private static final String SHAREIT_SERVER_URL = "http://localhost:9090";
 
     @Autowired
-    public BookingClient(@Value(SHAREIT_SERVER_URL) String serverUrl, RestTemplateBuilder builder) {
+    public BookingClient(@Value("${shareit-server.url}") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl + API_PREFIX))

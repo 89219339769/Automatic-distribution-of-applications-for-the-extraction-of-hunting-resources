@@ -16,10 +16,9 @@ import java.util.Map;
 public class ItemClient extends BaseClient {
 
     private static final String API_PREFIX = "/items";
-    private static final String SHAREIT_SERVER_URL = "http://localhost:9090";
 
     @Autowired
-    public ItemClient(@Value(SHAREIT_SERVER_URL) String serverUrl, RestTemplateBuilder builder) {
+    public ItemClient(@Value("${shareit-server.url}") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl + API_PREFIX))
