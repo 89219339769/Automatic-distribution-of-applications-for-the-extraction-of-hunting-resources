@@ -1,7 +1,6 @@
 package ru.practicum.shareit.application.model;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +22,7 @@ public class RequestedResources {
 
     private String name;
 
-
+    private Integer quantity;
     private ResourceStatus resourcesStatus;
 
 

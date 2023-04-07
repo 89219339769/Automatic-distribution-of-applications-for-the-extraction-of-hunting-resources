@@ -33,6 +33,8 @@ public class RequestedResources {
     @Column(nullable = false,length = 50)
     private String name;
 
+    @Column(nullable = false,length = 50)
+    private Integer quantity;
     @Enumerated(EnumType.STRING)
     @Column(name = "application_status", length = 100, nullable = false)
     private ResourceStatus resourcesStatus;

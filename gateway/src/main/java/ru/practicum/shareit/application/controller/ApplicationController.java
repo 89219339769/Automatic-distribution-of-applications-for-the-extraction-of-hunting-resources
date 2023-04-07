@@ -1,4 +1,3 @@
-
 package ru.practicum.shareit.application.controller;
 
 import lombok.RequiredArgsConstructor;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.practicum.shareit.application.ApplicationClient;
 import ru.practicum.shareit.application.model.Application;
+import ru.practicum.shareit.application.model.ApplicationStatus;
 
 
 @Controller
@@ -19,11 +19,18 @@ import ru.practicum.shareit.application.model.Application;
 @Slf4j
 @Validated
 public class ApplicationController {
-
+    private final Validation validation;
     private final ApplicationClient appClient;
+
     @PostMapping
     public ResponseEntity<Object> postUser(@RequestBody Application application) {
 
-        return appClient.postApplication(application);
+        if (validation.validate(application)) {
+            application.setStatus(ApplicationStatus.APPROVED);
+            appClient.postApplication(application);
+            return appClient.postApplication(application);
+        } else {
+            throw new RuntimeException("заявка не одобрена");
+        }
     }
 }
