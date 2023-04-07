@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.practicum.shareit.application.ApplicationClient;
+import ru.practicum.shareit.application.Generation;
+import ru.practicum.shareit.application.Validation;
 import ru.practicum.shareit.application.model.Application;
 import ru.practicum.shareit.application.model.ApplicationStatus;
 
@@ -21,6 +23,8 @@ import ru.practicum.shareit.application.model.ApplicationStatus;
 public class ApplicationController {
     private final Validation validation;
     private final ApplicationClient appClient;
+
+    private final Generation generation;
 
     @PostMapping
     public ResponseEntity<Object> postUser(@RequestBody Application application) {
